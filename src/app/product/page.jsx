@@ -1,8 +1,8 @@
-'use client';
-import { useState } from 'react';
-import { samplePage } from '~/contents/sample';
-import { Pagination } from 'antd';
-import Image from 'next/image';
+"use client";
+import { useState } from "react";
+import { samplePage } from "~/contents/sample";
+import { Pagination } from "antd";
+import Image from "next/image";
 
 export default function Product() {
   const [page, setPage] = useState(1);
@@ -10,9 +10,9 @@ export default function Product() {
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
   return (
-    <div className='min-h-screen'>
-      <div className='flex items-center justify-center pt-10'>
-        <div className='grid grid-cols-4 gap-5'>
+    <div className="min-h-screen">
+      <div className="flex items-center justify-center pt-10">
+        <div className="grid grid-cols-4 gap-5">
           {samplePage.slice(startIndex, endIndex).map((p, i) => (
             <div key={i}>
               <Image
@@ -20,14 +20,14 @@ export default function Product() {
                 alt={p.id}
                 height={10000}
                 width={10000}
-                className='object-cover h-80 w-80 rounded-lg'
-                loading='lazy'
+                className="object-cover h-80 w-80 rounded-lg"
+                loading="lazy"
               />
             </div>
           ))}
         </div>
       </div>
-      <div className='flex items-center justify-center py-10'>
+      <div className="flex items-center justify-center py-10">
         <Pagination
           defaultCurrent={1}
           total={samplePage.length}
