@@ -14,7 +14,7 @@ export default function Navbar() {
           <span className="hover:underline">About Us</span>
         </Link>
         <Link href="/product">
-          <span className="hover:underline">Our Product</span>
+          <span className="hover:underline">Product</span>
         </Link>
         <Link href="/project-reference">
           <span className="hover:underline">Project Reference</span>
