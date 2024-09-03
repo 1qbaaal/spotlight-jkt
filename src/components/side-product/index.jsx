@@ -1,69 +1,88 @@
 "use client";
 import { useState } from "react";
-import { categories } from "~/contents/sample";
-import { samplePage } from "~/contents/sample";
+import { categories } from "~/contents/product";
+import { productPage } from "~/contents/product";
 import { Pagination } from "antd";
 import Image from "next/image";
+import Link from "next/link";
 export default function ProductCard() {
   const [page, setPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const filterSample =
     selectedCategory === "All"
-      ? samplePage
-      : samplePage.filter((sample) => sample.category === selectedCategory);
+      ? productPage
+      : productPage.filter((sample) => sample.category === selectedCategory);
 
-  const pageSize = 5;
+  const pageSize = 12;
   const startIndex = (page - 1) * pageSize;
   const endIndex = startIndex + pageSize;
+  const onHandleRefresh = () => {
+    location.reload();
+  };
   return (
     <div>
-      <div className="flex gap-10 py-10 px-32">
-        {/* <div className="flex justify-center py-10 gap-10 bg-red-100">
-          {categories.map((c, i) => (
-            <div key={i}>
-              <button
-                className="btn bg-white w-[5vw] border border-gray-800 hover:bg-gray-800 hover:text-white hover:border-black"
-                onClick={() => setSelectedCategory(c)}
-              >
-                {c}
-              </button>
+      <div className="grid grid-cols-5 w-full gap-5 px-20 py-6 min-h-screen">
+        <div className="flex flex-col border-r-4">
+          <span className="text-xl font-semibold py-8">CATEGORY</span>
+          <span
+            onClick={onHandleRefresh}
+            className="hover:cursor-pointer text-base font-medium pt-2 pl-4"
+          >
+            {" "}
+            All Category{" "}
+          </span>
+          <div tabIndex={0} className="collapse collapse-arrow">
+            <div className="collapse-title text-base font-medium">
+              <span className="hover:cursor-pointer">Lampu Hias</span>
             </div>
-          ))}
-        </div> */}
-
-        <div className="collapse w-[10%] border ">
-          <input type="checkbox" />
-          <div className="collapse-title text-xl font-medium flex justify-end">Category</div>
-          <div className="collapse-content flex flex-col items-end">
-            {categories.map((c, i) => (
-              <div key={i}>
-                <p
-                  className="bg-white w-[5vw] border border-gray-800 hover:bg-gray-800 hover:text-white hover:border-black hover:cursor-pointer"
-                  onClick={() => setSelectedCategory(c)}
-                >
-                  {c}
-                </p>
-              </div>
-            ))}
+            <div className="collapse-content">
+              {categories.map((c, i) => (
+                <div key={i}>
+                  {c?.subCategory?.map((sub, i) => (
+                    <p
+                      className="w-[15vw] text-sm hover:cursor-pointer pr-10 py-2 pl-4"
+                      key={i}
+                      onClick={() => setSelectedCategory(sub.name)}
+                    >
+                      {sub.name}
+                    </p>
+                  ))}
+                </div>
+              ))}
+            </div>
           </div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum esse laudantium tenetur error doloribus ducimus tempora accusantium maxime distinctio aspernatur consequatur similique aliquam quibusdam, hic est inventore consequuntur porro enim?</p>
         </div>
-        
-        <div className="flex items-center justify-center bg-blue-100">
-          <div className="grid grid-cols-4 gap-5">
-            {filterSample.slice(startIndex, endIndex).map((p, i) => (
-              <div key={i}>
-                <Image
-                  src={`${p.imageUrl}`}
-                  alt={p.id}
-                  height={10000}
-                  width={10000}
-                  className="object-cover h-80 w-80 rounded-lg"
-                  loading="lazy"
-                />
-              </div>
-            ))}
+
+        <div className="col-span-4">
+          {" "}
+          <div className="flex items-center justify-center">
+            <div className="grid grid-cols-3 gap-5">
+              {filterSample.slice(startIndex, endIndex).map((p, i) => (
+                <div className="card bg-base-100 w-72 shadow-xl ">
+                  <figure className="px-10 pt-10">
+                    <Image
+                      src={`${p.imageUrl}`}
+                      alt={p.id}
+                      height={10000}
+                      width={10000}
+                      className="w-[250px] h-[250px] rounded-lg"
+                      loading="lazy"
+                    />
+                  </figure>
+                  <div className="card-body items-center text-center">
+                    <h2 className="card-title text-center">{p.name}</h2>
+                    <div className="card-actions">
+                      <Link href={`/product/${p.id}`}>
+                        <button className="border-2 bg-slate-200 px-5 py-2 rounded-lg shadow-lg hover:bg-black hover:text-white">
+                          View Product
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -14,6 +14,10 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1280px",
+      xxl: "1536px",
+      fhd: { min: "1920px" },
+      qhd: { min: "2560px" },
+      uhd: { min: "3840px" },
     },
   },
   daisyui: {
