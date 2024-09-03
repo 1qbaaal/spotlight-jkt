@@ -1,10 +1,14 @@
 "use client";
 import Image from "next/image";
-import Store from "~/components/store/index ";
 import { FaMapMarkerAlt } from "react-icons/fa";
 import Link from "next/link";
 import { FaSquarePhone } from "react-icons/fa6";
 import { MdEmail } from "react-icons/md";
+import dynamic from "next/dynamic";
+
+// const Store = dynamic(() => import("../../components/store"), {
+//   ssr: false,
+// });
 
 export default function ContactUs() {
   return (
@@ -64,7 +68,7 @@ export default function ContactUs() {
           </div>
         </div>
         <div className="w-1/2">
-          <Store />
+          {/* <Store /> */}
         </div>
       </div>
     </div>
