@@ -1,29 +1,31 @@
 import Image from "next/image";
 import { projectRef } from "~/contents/project-ref";
+
 export default function ProjectReferenceCard() {
   return (
-    <div className="">
-      <div className="grid grid-cols-4 w-full gap-5 py-6">
+    <div className="px-4 sm:px-6 lg:px-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 py-6">
         {projectRef.map((p, i) => (
-          <div className="relative overflow-hidden hover:scale-105 transition-all duration-300" key={i}>
-          <Image
-            src={`${p.imageUrl}`}
-            alt={p.id}
-            width={1000}
-            height={1000}
-            className="w-[350px] h-[400px]"
-          />
-          <div className="absolute w-[350px] h-[400px] bg-black/20 flex flex-col justify-center bottom-0 hover:bottom-0 opacity-0 hover:opacity-100 transition-all duration-300">
-            <span className="text-lg text-white font-semibold text-center">
-              {" "}
-              {p.company}
-            </span>
-            <span className="text-lg text-white font-semibold text-center">
-              {" "}
-              {p.product}
-            </span>
+          <div
+            className="relative overflow-hidden group"
+            key={i}
+          >
+            <Image
+              src={`${p.imageUrl}`}
+              alt={p.id}
+              width={1000}
+              height={1000}
+              className="w-full h-[300px] sm:h-[350px] md:h-[400px] object-cover transition-transform duration-300 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span className="text-base sm:text-lg md:text-xl font-semibold text-white">
+                {p.company}
+              </span>
+              <span className="text-base sm:text-lg md:text-xl font-semibold text-white mt-2">
+                {p.product}
+              </span>
+            </div>
           </div>
-        </div>
         ))}
       </div>
     </div>

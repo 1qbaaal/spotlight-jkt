@@ -2,7 +2,8 @@
 import Image from "next/image";
 import { productPage } from "~/contents/product";
 import Link from "next/link";
-import { descProduct} from "~/contents/product";
+import { descProduct } from "~/contents/product";
+
 export default function DetailProduct({
   productId,
   name,
@@ -15,75 +16,76 @@ export default function DetailProduct({
 }) {
   return (
     <div className="flex flex-col min-h-screen font-sans">
-      <div className="flex flex-col py-6 px-20">
-        <p className="text-3xl font-semibold py-2">{name}</p>
+      <div className="flex flex-col py-6 px-4 sm:px-8 md:px-12 lg:px-20">
+        <p className="text-2xl sm:text-3xl font-semibold py-2">{name}</p>
         <hr className="border-2 border-black" />
-        <p className="text-xl font-semibold py-2">{category}</p>
-        <div className="flex flex-cols-2">
-          <div className="w-1/2">
-            <div className="px-10 py-6 flex justify-center">
+        <p className="text-lg sm:text-xl font-semibold py-2">{category}</p>
+        <div className="flex flex-col sm:flex-row gap-6">
+          <div className="w-full sm:w-1/2">
+            <div className="px-4 py-6 flex justify-center">
               <Image
                 src={`${imageUrl}`}
-                alt="logo"
+                alt="Product Image"
                 width={1000}
                 height={1000}
-                className="w-[500px] h-[500px]"
+                className="w-full max-w-[500px] h-auto"
               />
             </div>
           </div>
-          <div className="w-1/2 grid grid-rows-2">
-            <div className="px-10 py-6 flex flex-col">
-              {" "}
-              <span className="text-xl font-semibold">Spesifikasi</span>
+          <div className="w-full sm:w-1/2">
+            <div className="px-4 py-6 flex flex-col">
+              <span className="text-lg sm:text-xl font-semibold">Spesifikasi</span>
               <hr className="border border-black" />
-              <h1 className="text-lg font-semibold pt-4"> Tipe: </h1>
-              <span className="text-xl font-base">{type}</span>
-              <h1 className="text-lg font-semibold pt-4"> Dimensi Produk: </h1>
+              <h1 className="text-base sm:text-lg font-semibold pt-4">Tipe:</h1>
+              <span className="text-base sm:text-xl">{type}</span>
+              <h1 className="text-base sm:text-lg font-semibold pt-4">Dimensi Produk:</h1>
               <span>Diameter: {diameter}</span>
               <span>Tinggi: {tinggi}</span>
             </div>
-            <div className="px-10 py-6 flex flex-col">
-              <span className="text-xl font-semibold">Deskripsi</span>
+            <div className="px-4 py-6 flex flex-col">
+              <span className="text-lg sm:text-xl font-semibold">Deskripsi</span>
               <hr className="border border-black" />
-              <span className="text-xl font-base py-4">{name}</span>
-              <span>
+              <span className="text-base sm:text-xl py-4">{name}</span>
+              <div>
                 {descProduct.map((d, i) => (
-                  <p key={i}>{d}</p>
+                  <p key={i} className="text-base sm:text-lg">{d}</p>
                 ))}
-              </span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="py-10 px-20">
-        <h1 className="underline text-2xl font-semibold"> Fitur</h1>
-        <h1 className="text-base py-4">
+      <div className="py-6 px-4 sm:px-8 md:px-12 lg:px-20">
+        <h1 className="underline text-xl sm:text-2xl font-semibold">Fitur</h1>
+        <h1 className="text-sm sm:text-base py-4">
           Harga murah dan kualitas yang jauh lebih baik dari merk kompetitor.
         </h1>
-        <li>Garansi sparepart 1 tahun</li>
+        <ul className="list-disc pl-5 text-sm sm:text-base">
+          <li>Garansi sparepart 1 tahun</li>
+        </ul>
       </div>
-      <div className="px-20">
+      <div className="px-4 sm:px-8 md:px-12 lg:px-20">
         <hr className="border-2 border-black" />
       </div>
-      <div className="py-6 px-20">
-        <h1 className="text-2xl text-center font-semibold"> Other Product</h1>
-        <div className="grid grid-cols-4 w-full gap-5 py-6">
+      <div className="py-6 px-4 sm:px-8 md:px-12 lg:px-20">
+        <h1 className="text-xl sm:text-2xl text-center font-semibold">Other Product</h1>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 py-6">
           {productPage.slice(0, 4).map((p, i) => (
-            <div className="card bg-base-100 w-80 shadow-xl">
-              <figure className="px-10 pt-10">
+            <div key={i} className="card bg-base-100 w-full max-w-sm shadow-xl">
+              <figure className="px-4 pt-4">
                 <Image
                   src={`${p.imageUrl}`}
                   alt="Lamp"
-                  className="rounded-xl w-[250px] h-[250px]"
-                  height={1000}
-                  width={1000}
+                  className="rounded-xl w-full h-auto"
+                  height={250}
+                  width={250}
                 />
               </figure>
               <div className="card-body items-center text-center">
-                <h2 className="card-title text-center">{p.product}</h2>
+                <h2 className="card-title text-base sm:text-lg">{p.product}</h2>
                 <div className="card-actions">
                   <Link href={`/product/${p.id}`}>
-                    <button className="border-2 bg-slate-200 px-5 py-2 rounded-lg shadow-lg hover:bg-black hover:text-white">
+                    <button className="border-2 bg-slate-200 px-4 py-2 rounded-lg shadow-lg hover:bg-black hover:text-white">
                       View Product
                     </button>
                   </Link>

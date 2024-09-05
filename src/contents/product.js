@@ -283,6 +283,98 @@ export const categories = [
       },
     ],
   },
+  {
+    id: Date.now(),
+    name: "Lampu Dinding",
+    subCategory: [
+      {
+        id: Date.now(),
+        name: "Lampu Dinding Indoor",
+      },
+      {
+        id: Date.now(),
+        name: "Lampu Dinding Outdoor Minimalist",
+      },
+      {
+        id: Date.now(),
+        name: "Lampu Dinding Frame",
+      },
+      {
+        id: Date.now(),
+        name: "Lampu Dinding Outdoor & Taman", 
+      },
+    ],
+  },
+  {
+    id: Date.now(),
+    name: "Lampu Plafon",
+    subCategory: [
+      {
+        id: Date.now(),
+        name: "Lampu Plafon Frame",
+      },
+      {
+        id: Date.now(),
+        name: "Lampu Plafon LED",
+      },
+      {
+        id: Date.now(),
+        name: "Lampu Plafon SW",
+      },
+    ],
+  },
+  {
+    id: Date.now(),
+    name: "Lampu Table & Standing",
+    subCategory: [
+      {
+        id: Date.now(),
+        name: "Lampu Table & Standing",
+      },
+    ],
+  },
+  {
+    id: Date.now(),
+    name: "Downlight. E27 & MR16",
+    subCategory: [
+      {
+        id: Date.now(),
+        name: "Downlight. E27 & MR16",
+      },
+      {
+        id: Date.now(),
+        name: "Bulb LED",
+      },
+      {
+        id: Date.now(),
+        name: "Downlight. LED. Outbow & Inbow",
+      },
+      {
+        id: Date.now(),
+        name: "Lampu Lantai",
+      },
+      {
+        id: Date.now(),
+        name: "PJU. LED & E27",
+      },
+      {
+        id: Date.now(),
+        name: "Sorot LED",
+      },
+      {
+        id: Date.now(),
+        name: "Track Light Magnetic",
+      },
+      {
+        id: Date.now(),
+        name: "Track. LED & E27",
+      },
+      {
+        id: Date.now(),
+        name: "TL LED & Selang",
+      },
+    ],
+  },
 ];
 
 export const descProduct = [
